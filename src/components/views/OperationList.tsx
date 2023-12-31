@@ -1,22 +1,22 @@
 import {
   Box,
+  Button,
   Flex,
-  Heading,
-  Input,
   NumberInput,
   NumberInputField,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
   Text,
-  Tfoot,
   Th,
   Thead,
   Tr
 } from '@chakra-ui/react'
+import { FiPlus } from 'react-icons/fi'
 import SelectInput from '../forms/Select'
+import TablePagination from '../commons/Pagination'
+import { Link } from 'react-router-dom'
 
 const defaultOption = { label: 'ALL', value: 'ALL' }
 
@@ -51,15 +51,18 @@ const soIdOptions = Array.from(Array(8).keys()).map((val) => {
     : defaultOption
 })
 
+const tableData = soIdOptions
+  .map(({ value }) => ({
+    id: value,
+    status: 'DRAFT',
+    operationDate: new Date('2023-10-05'),
+    company: 'VITA'
+  }))
+  .filter((val) => val.id !== 'ALL')
+
 function OperationList() {
   return (
     <Box>
-      <Flex justify='space-between' align='center'>
-        <Heading as='h1' fontSize={18}>
-          OPERASI
-        </Heading>
-        <Input w={350} placeholder='search here' p={5} borderRadius={8} border='2px solid rgb(224, 224, 224)' />
-      </Flex>
       <Flex
         direction='column'
         gap={5}
@@ -103,48 +106,45 @@ function OperationList() {
       </Flex>
       <Flex
         direction='column'
+        gap={5}
         width='100%'
         my={30}
         boxShadow='rgba(0, 0, 0, 0.1) 0px 4px 8px 0px'
         p={6}
         borderRadius={8}
       >
+        <Button display='flex' gap={2} alignItems='center' fontSize={13} colorScheme='blue' w='fit-content'>
+          <FiPlus /> Create New Operation
+        </Button>
         <TableContainer>
           <Table variant='simple'>
-            <TableCaption>Imperial to metric conversion factors</TableCaption>
             <Thead>
               <Tr>
-                <Th>To convert</Th>
-                <Th>into</Th>
-                <Th isNumeric>multiply by</Th>
+                <Th>#</Th>
+                <Th>OPERATION ID</Th>
+                <Th>STATUS</Th>
+                <Th>OPERATION DATE</Th>
+                <Th>COMPANY</Th>
               </Tr>
             </Thead>
             <Tbody>
-              <Tr>
-                <Td>inches</Td>
-                <Td>millimetres (mm)</Td>
-                <Td isNumeric>25.4</Td>
-              </Tr>
-              <Tr>
-                <Td>feet</Td>
-                <Td>centimetres (cm)</Td>
-                <Td isNumeric>30.48</Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
+              {tableData.map(({ id, company, operationDate, status }, idx) => (
+                <Tr key={idx} cursor='pointer' _hover={{ background: 'rgb(0,84,166)', color: 'white' }}>
+                  <Td fontSize={12}>{idx + 1}</Td>
+                  <Td fontSize={12}>
+                    <Text textDecoration='underline' as={Link} to={`/operation/${id}/so-information`}>
+                      {id}
+                    </Text>
+                  </Td>
+                  <Td fontSize={12}>{status}</Td>
+                  <Td fontSize={12}>{operationDate.toLocaleDateString()}</Td>
+                  <Td fontSize={12}>{company}</Td>
+                </Tr>
+              ))}
             </Tbody>
-            <Tfoot>
-              <Tr>
-                <Th>To convert</Th>
-                <Th>into</Th>
-                <Th isNumeric>multiply by</Th>
-              </Tr>
-            </Tfoot>
           </Table>
         </TableContainer>
+        <TablePagination />
       </Flex>
     </Box>
   )

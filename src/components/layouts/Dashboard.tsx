@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Icon, Image } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Icon, Image, Input } from '@chakra-ui/react'
 import { PropsWithChildren } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import RdsLogo from '../../assets/rds-logo.png'
@@ -6,7 +6,7 @@ import { MdSettings } from 'react-icons/md'
 
 const menus = [
   { name: 'HOME', path: '/home', icon: MdSettings },
-  { name: 'OPEARASI', path: '/operasi', icon: MdSettings },
+  { name: 'OPEARASI', path: '/operation', icon: MdSettings },
   { name: 'STOCK', path: '/stock', icon: MdSettings },
   { name: 'TRACKING STOCK MOVE', path: '/tracking-stock-move', icon: MdSettings },
   { name: 'STOCK OPNAME', path: '/stock-opname', icon: MdSettings },
@@ -20,12 +20,21 @@ function Dashboard({ children }: PropsWithChildren) {
   const { pathname } = useLocation()
 
   return (
-    <Flex gap={5}>
-      <Flex direction='column' gap={20} w={300} h='100vh' p={8} boxShadow='rgba(0, 0, 0, 0.1) 0px 4px 8px 0px'>
+    <Flex>
+      <Flex
+        direction='column'
+        gap='30px'
+        w={300}
+        h='100vh'
+        p={8}
+        boxShadow='rgba(0, 0, 0, 0.1) 0px 4px 8px 0px'
+        position='sticky'
+        top={0}
+      >
         <Image src={RdsLogo} alt='rds-logo' height='80px' objectFit='contain' />
         <Flex direction='column' gap={5}>
           {menus.map(({ name, path, icon }, idx) => {
-            const selected = pathname === path
+            const selected = pathname.includes(path)
 
             return (
               <Button
@@ -52,6 +61,12 @@ function Dashboard({ children }: PropsWithChildren) {
         </Flex>
       </Flex>
       <Box p={10} w='100%'>
+        <Flex justify='space-between' align='center'>
+          <Heading as='h1' fontSize={18}>
+            OPERASI
+          </Heading>
+          <Input w={350} placeholder='search here' p={5} borderRadius={8} border='2px solid rgb(224, 224, 224)' />
+        </Flex>
         {children}
       </Box>
     </Flex>
