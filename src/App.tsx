@@ -3,6 +3,7 @@ import Dashboard from './components/layouts/Dashboard'
 import './App.css'
 import OperationList from './components/views/OperationList'
 import SoInformation from './components/views/SoInformation'
+import CreateOperation from './components/views/CreateOperation'
 import { ChakraProvider } from '@chakra-ui/react'
 
 const router = createBrowserRouter([
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
     path: '/operation/create',
     element: (
       <Dashboard>
-        <SoInformation />
+        <CreateOperation />
       </Dashboard>
     )
   },

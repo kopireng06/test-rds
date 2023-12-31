@@ -113,7 +113,16 @@ function OperationList() {
         p={6}
         borderRadius={8}
       >
-        <Button display='flex' gap={2} alignItems='center' fontSize={13} colorScheme='blue' w='fit-content'>
+        <Button
+          as={Link}
+          to='/operation/create'
+          display='flex'
+          gap={2}
+          alignItems='center'
+          fontSize={13}
+          colorScheme='blue'
+          w='fit-content'
+        >
           <FiPlus /> Create New Operation
         </Button>
         <TableContainer>
