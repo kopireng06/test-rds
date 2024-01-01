@@ -1,7 +1,7 @@
-import { Button, Flex, Icon, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react'
-import { useLocation, useParams } from 'react-router-dom'
-import { BsPencilFill } from 'react-icons/bs'
+import { Flex, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react'
+import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import OperationDescription from '../commons/OperationDesc'
 
 const soInformations = [
   { id: 'SO/231112/0005', spkCount: 1, company: 'TSJ' },
@@ -9,73 +9,11 @@ const soInformations = [
 ]
 
 function SoInformation() {
-  const params = useParams()
   const { pathname } = useLocation()
 
   return (
     <Flex flexDir='column' gap={4}>
-      <Flex
-        direction='column'
-        gap={5}
-        width='100%'
-        my={30}
-        boxShadow='rgba(0, 0, 0, 0.1) 0px 4px 8px 0px'
-        p={6}
-        borderRadius={8}
-      >
-        <Flex gap={4}>
-          <Text as='span' fontSize={14} fontWeight={700} minW={200}>
-            Operation ID
-          </Text>
-          <Text as='span' fontSize={14}>
-            {params?.operationID}
-          </Text>
-        </Flex>
-        <Flex gap={4}>
-          <Text as='span' fontSize={14} fontWeight={700} minW={200}>
-            Operation Date
-          </Text>
-          <Text as='span' fontSize={14}>
-            21 November 2023
-          </Text>
-        </Flex>
-        <Flex gap={4}>
-          <Text as='span' fontSize={14} fontWeight={700} minW={200}>
-            Finish Operation Date
-          </Text>
-          <Text as='span' fontSize={14}>
-            -
-          </Text>
-        </Flex>
-        <Flex gap={4}>
-          <Text as='span' fontSize={14} fontWeight={700} minW={200}>
-            Status
-          </Text>
-          <Text as='span' fontSize={14}>
-            Draft
-          </Text>
-        </Flex>
-        <Flex gap={4}>
-          <Text as='span' fontSize={14} fontWeight={700} minW={200}>
-            PRIORITY
-          </Text>
-          <Text as='span' fontSize={14}>
-            YES
-          </Text>
-        </Flex>
-        <Button w='fit-content' alignSelf='flex-end' colorScheme='blue' fontSize={14}>
-          <Icon as={BsPencilFill} mr={2} />
-          Edit
-        </Button>
-      </Flex>
-      <Flex gap={3}>
-        <Button fontSize={14} colorScheme='green'>
-          Informasi SO
-        </Button>
-        <Button fontSize={14}>Material</Button>
-        <Button fontSize={14}>Catatan</Button>
-        <Button fontSize={14}>Penggunaan Foam</Button>
-      </Flex>
+      <OperationDescription />
       <TableContainer>
         <Table variant='simple'>
           <Thead>
