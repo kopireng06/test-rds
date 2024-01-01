@@ -8,6 +8,7 @@ import NoteList from './components/views/NoteList'
 import SoDetail from './components/views/SoDetail'
 import { ChakraProvider } from '@chakra-ui/react'
 import MaterialList from './components/views/MaterialList'
+import FoamUsageList from './components/views/FoamUsageList'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,14 @@ const router = createBrowserRouter([
     element: (
       <Dashboard>
         <SoDetail />
+      </Dashboard>
+    )
+  },
+  {
+    path: '/operation/:operationID/foam-usages',
+    element: (
+      <Dashboard>
+        <FoamUsageList />
       </Dashboard>
     )
   },
