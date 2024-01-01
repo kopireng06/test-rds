@@ -4,6 +4,7 @@ import './App.css'
 import OperationList from './components/views/OperationList'
 import SoInformation from './components/views/SoInformation'
 import CreateOperation from './components/views/CreateOperation'
+import NoteList from './components/views/NoteList'
 import SoDetail from './components/views/SoDetail'
 import { ChakraProvider } from '@chakra-ui/react'
 import MaterialList from './components/views/MaterialList'
@@ -30,6 +31,14 @@ const router = createBrowserRouter([
     element: (
       <Dashboard>
         <MaterialList />
+      </Dashboard>
+    )
+  },
+  {
+    path: '/operation/:operationID/notes',
+    element: (
+      <Dashboard>
+        <NoteList />
       </Dashboard>
     )
   },

@@ -79,7 +79,14 @@ function OperationDescription() {
         >
           Material
         </Button>
-        <Button fontSize={14}>Catatan</Button>
+        <Button
+          fontSize={14}
+          colorScheme={location.pathname.includes('notes') ? 'green' : undefined}
+          as={Link}
+          to={`/operation/${params?.operationID}/notes`}
+        >
+          Catatan
+        </Button>
         <Button fontSize={14}>Penggunaan Foam</Button>
       </Flex>
     </>
