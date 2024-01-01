@@ -1,5 +1,5 @@
 import { Button, Flex, Icon, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { BsPencilFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
@@ -10,6 +10,7 @@ const soInformations = [
 
 function SoInformation() {
   const params = useParams()
+  const { pathname } = useLocation()
 
   return (
     <Flex flexDir='column' gap={4}>
@@ -90,7 +91,7 @@ function SoInformation() {
               <Tr key={idx} cursor='pointer' _hover={{ background: 'rgb(0,84,166)', color: 'white' }}>
                 <Td fontSize={12}>{idx + 1}</Td>
                 <Td fontSize={12}>
-                  <Text textDecoration='underline' as={Link} to={`/operation/${id}`}>
+                  <Text textDecoration='underline' as={Link} to={`${pathname}/${id.replaceAll('/', '-')}`}>
                     {id}
                   </Text>
                 </Td>

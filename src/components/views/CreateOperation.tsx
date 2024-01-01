@@ -132,7 +132,7 @@ function CreateOperation() {
               <Text as='span' fontWeight={700} minW={200}>
                 Product
               </Text>
-              <SelectInput options={soIdOptions} />
+              <SelectInput options={productOptions} />
             </Flex>
             <Flex gap={4} alignItems='center'>
               <Text as='span' fontWeight={700} minW={200}>
