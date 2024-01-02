@@ -1,8 +1,9 @@
-import { Box, Button, Flex, Heading, Icon, Image, Input } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Icon, Image, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { PropsWithChildren } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import RdsLogo from '../../assets/rds-logo.png'
 import { MdSettings } from 'react-icons/md'
+import { FaSearch } from 'react-icons/fa'
 
 const menus = [
   { name: 'HOME', path: '/home', icon: MdSettings },
@@ -65,7 +66,14 @@ function Dashboard({ children }: PropsWithChildren) {
           <Heading as='h1' fontSize={18}>
             OPERASI
           </Heading>
-          <Input w={350} placeholder='search here' p={5} borderRadius={8} border='2px solid rgb(224, 224, 224)' />
+          <InputGroup w={350} display='flex' alignItems='center'>
+            <Input placeholder='search here' borderRadius={8} border='2px solid rgb(224, 224, 224)' />
+            <InputRightElement mr={2}>
+              <Button fontSize={12} h={7} colorScheme='blue'>
+                <FaSearch />
+              </Button>
+            </InputRightElement>
+          </InputGroup>
         </Flex>
         {children}
       </Box>
