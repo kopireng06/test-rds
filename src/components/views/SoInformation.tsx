@@ -26,7 +26,7 @@ function SoInformation() {
           </Thead>
           <Tbody>
             {soInformations.map(({ id, company, spkCount }, idx) => (
-              <Tr key={idx} cursor='pointer' _hover={{ background: 'rgb(0,84,166)', color: 'white' }}>
+              <Tr key={idx} cursor='pointer' _hover={{ background: '#718096', color: 'white' }}>
                 <Td fontSize={12}>{idx + 1}</Td>
                 <Td fontSize={12}>
                   <Text textDecoration='underline' as={Link} to={`${pathname}/${id.replaceAll('/', '-')}`}>

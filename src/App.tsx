@@ -9,6 +9,7 @@ import SoDetail from './components/views/SoDetail'
 import { ChakraProvider } from '@chakra-ui/react'
 import MaterialList from './components/views/MaterialList'
 import FoamUsageList from './components/views/FoamUsageList'
+import CreateFoamUsage from './components/views/CreateFoamUsage'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,14 @@ const router = createBrowserRouter([
     element: (
       <Dashboard>
         <SoDetail />
+      </Dashboard>
+    )
+  },
+  {
+    path: '/operation/:operationID/foam-usages/create',
+    element: (
+      <Dashboard>
+        <CreateFoamUsage />
       </Dashboard>
     )
   },

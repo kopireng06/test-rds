@@ -71,7 +71,7 @@ function NoteList() {
           </Thead>
           <Tbody>
             {tableData.map(({ product, soID, createdAt, createdBy }, idx) => (
-              <Tr key={idx} cursor='pointer' _hover={{ background: 'rgb(0,84,166)', color: 'white' }}>
+              <Tr key={idx} cursor='pointer' _hover={{ background: '#718096', color: 'white' }}>
                 <Td fontSize={12}>{idx + 1}</Td>
                 <Td fontSize={12}>{product}</Td>
                 <Td fontSize={12}>{soID}</Td>

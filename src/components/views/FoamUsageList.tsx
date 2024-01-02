@@ -1,7 +1,7 @@
 import { Button, Flex, Icon, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 import OperationDescription from '../commons/OperationDesc'
 import { FaPlus } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const tableData = [
   { product: 'BSA001', uom: 'UOM 001', demand: 1, m3: 8000 },
@@ -10,10 +10,12 @@ const tableData = [
 ]
 
 function FoamUsageList() {
+  const { pathname } = useLocation()
+
   return (
     <Flex flexDir='column' gap={4}>
       <OperationDescription />
-      <Button as={Link} w='fit-content' alignSelf='flex-end' colorScheme='blue' fontSize={14}>
+      <Button as={Link} w='fit-content' alignSelf='flex-end' colorScheme='blue' fontSize={14} to={`${pathname}/create`}>
         <Icon as={FaPlus} mr={2} />
         Add Foam
       </Button>
@@ -30,7 +32,7 @@ function FoamUsageList() {
           </Thead>
           <Tbody>
             {tableData.map(({ product, uom, demand, m3 }, idx) => (
-              <Tr key={idx} cursor='pointer' _hover={{ background: 'rgb(0,84,166)', color: 'white' }}>
+              <Tr key={idx} cursor='pointer' _hover={{ background: '#718096', color: 'white' }}>
                 <Td fontSize={12}>{idx + 1}</Td>
                 <Td fontSize={12}>{product}</Td>
                 <Td fontSize={12}>{uom}</Td>
